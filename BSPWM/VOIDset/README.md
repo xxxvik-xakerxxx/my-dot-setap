@@ -9,7 +9,9 @@ But everyone are welcome to use this. And remember to read the config files befo
 ## Preview
 **Enter The Void** <br />
 ![alt text](https://github.com/xxxvik-xakerxxx/my-dot-setap/blob/master/BSPWM/VOIDset/preview.png) <br />
-
+![alt text](https://github.com/xxxvik-xakerxxx/my-dot-setap/blob/master/BSPWM/VOIDset/rofi.png) <br />
+![alt text](https://github.com/xxxvik-xakerxxx/my-dot-setap/blob/master/BSPWM/VOIDset/editors.png) <br />
+![alt taxt](https://github.com/xxxvik-xakerxxx/my-dot-setap/blob/master/BSPWM/VOIDset/clean.png) <br />
 **WM** : Bspwm <br />
 **Panel** : Tint2 <br />
 **Panel Font** : Noto Sans & Awesome <br />
