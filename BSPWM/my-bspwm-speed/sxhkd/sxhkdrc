@@ -1,0 +1,82 @@
+# UTILS
+
+super + shift + Escape
+	python ~/.power.py shutdown
+
+super + shift + grave
+	python ~/.power.py reboot
+
+super + l
+	i3lock-fancy -p
+
+Caps_Lock
+	~/.layout.py
+
+# LAUNCHERS
+
+shift + F3
+	sh ~/.toggle.sh
+
+Sys_Req
+	scrot
+
+super + r
+	sh ~/.rofi.sh
+
+super + v
+	thunar
+
+super + b
+	firefox
+
+super + c
+	mousepad
+
+super + x
+	termite
+
+# SOUND
+
+alt + e
+	pactl -- set-sink-volume 0 -5%
+
+alt + r
+	pactl -- set-sink-volume 0 +5%
+
+alt + m
+	pactl set-sink-mute 0 toggle
+
+# WM
+
+alt + q
+	bspc node focused -c
+
+alt + {x,t,f}
+	bspc node focused -t {floating,tiled,fullscreen}
+
+super + {a,s,w,d}
+	bspc node focused -s {west,south,north,east}
+
+alt + {a,s,w,d}
+	bspc node focused -f {west,south,north,east}
+
+alt + Tab
+	bspc node focused -f next.local
+
+super + shift + {1-7}
+	bspc node focused -d ^{1-7}
+
+super + {1-7}
+	bspc desktop -f ^{1-7}
+
+~button1
+	bspc pointer -g focus
+
+super + button{1,3}
+	bspc pointer -g {move,resize_corner}
+
+super + !button{1,3}
+	bspc pointer -t %i %i
+
+super + @button{1,3}
+	bspc pointer -u

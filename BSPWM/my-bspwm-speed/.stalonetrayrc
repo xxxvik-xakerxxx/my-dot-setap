@@ -1,0 +1,12 @@
+background "#000"
+decorations none
+dockapp_mode none
+geometry 3x1+1050+8
+grow_gravity NW
+icon_gravity NW
+icon_size 35
+kludges force_icons_size
+parent_bg true
+scrollbars none
+sticky true
+window_type dock

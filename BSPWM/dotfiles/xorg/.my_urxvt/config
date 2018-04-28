@@ -1,0 +1,58 @@
+! vi: ft=xdefaults
+
+URxvt.termName: rxvt-unicode
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: false
+URxvt.saveLines: 9999
+URxvt.intensityStyles: false
+URxvt.depth: 32
+URxvt.allow_bold: true
+
+! NOTE font and line spacing are fixed in `rxvt-unicode-patched` (AUR)
+URxvt.font: xft:Iosevka Term:pixelsize=12
+URxvt.boldFont: xft:Iosevka Term:pixelsize=12:bold
+URxvt.italicFont: xft:Iosevka Term:pixelsize=12:italic
+URxvt.bolditalicFont: xft:Iosevka Term:pixelsize=12:bold:italic
+URxvt.letterSpace: 0
+URxvt.lineSpace: 0
+
+URxvt.scrollBar: false
+URxvt.scrollTtyOutput: true
+URxvt.scrollTtyKeypress: true
+Urxvt.secondaryScroll: true
+
+! NOTE needs `urxvt-perls` (Arch Linux)
+URxvt.perl-ext-common: default,matcher,selection-to-clipboard,clipboard,url-select,keyboard-select
+URxvt.url-launcher:	/usr/bin/xdg-open
+URxvt.matcher.button: 1
+
+! Key Bindings
+! NOTE see https://superuser.com/questions/1247281/how-to-configure-rxvt-unicode-to-behave-similar-to-gnome-terminal-or-others-f
+!
+! Disable ISO 14755 unicode input so we can use Ctrl-Shift bindings
+URxvt.iso14755:        false
+URxvt.iso14755_52:     false
+! Disable Ctrl-Alt-c & Ctrl-Alt-v bindings (optional)
+URxvt.keysym.C-M-c:    builtin-string:
+URxvt.keysym.C-M-v:    builtin-string:
+! Bind Ctrl-c & Ctrl-v to copy and paste
+! I dont know why, but I needed to use hex keysym values to get it to work
+URxvt.keysym.C-c: eval:selection_to_clipboard
+URxvt.keysym.C-v: eval:paste_clipboard
+
+URxvt.keysym.Home: \033[H
+URxvt.keysym.End:  \033[F
+
+! clear the scrollback
+URxvt.keysym.Control-l: command:\033c
+
+! vi-like for scrollback
+URxvt.keysym.Meta-k: command:\033]720;1\007
+URxvt.keysym.Meta-j: command:\033]721;1\007
+
+! keybindings for `urxvt-perls` package (Arch Linux)
+URxvt.url-select.launcher: /usr/bin/xdg-open
+URxvt.url-select.underline: true
+URxvt.keysym.C-u: perl:url-select:select_next
+URxvt.keysym.C-Escape: perl:keyboard-select:activate
+URxvt.keysym.C-s: perl:keyboard-select:search
