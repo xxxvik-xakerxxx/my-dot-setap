@@ -21,6 +21,7 @@ export PATH="${PATH}:$HOME/.bin"
 
 # Autostart
 # I put most of autostart in bspwmrc
+exec setxkbmap -option grp:caps_toggle -option lv3:ralt_switch -option grp_led:caps -layout us+typo,ru:2+typo &
 sxhkd &
 emacs --daemon &
 exec bspwm

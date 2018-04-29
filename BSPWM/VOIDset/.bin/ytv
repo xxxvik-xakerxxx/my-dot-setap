@@ -1,0 +1,3 @@
+#!bin/bash
+
+youtube-viewer --video-player=mplayer --resolution=480p

@@ -4,15 +4,15 @@
 
 ## launch terminal
 super + Return
-	urxvt	
+	urxvt
 
 ## launch alternative terminal
 #super + shift + Return
 #	termite
 
 ## volume control
-XF86Audio{RaiseVolume,LowerVolume,Mute}
-	pamixer {-i 5,-d 5,-t}
+XF86Audio{RaiseVolume,LowerVolume}
+    amixer set {Master 1%+,Master 1%-}
 
 ## music control
 XF86Audio{Next,Prev,Play,Stop}
@@ -28,19 +28,19 @@ super + s
 	
 ## launch thunar
 super + shift + f
-	thunar
+	urxvt -e ranger
 	
-## launch firefox
+## launch browser
 super + shift + w
-	firefox
+	qutebrowser
 	
-## launch geany
+## launch emacs
 super + shift + g
-	geany
+	urxvt -e emacs
 
 ## fancy lockscreen :)
-#super + l
-#	i3lock-fancy
+super + l
+	i3lock -ni /home/vh/.config/i3lock.png
 	
 ## take a screenshot
 Print
