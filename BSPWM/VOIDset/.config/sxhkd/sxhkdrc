@@ -40,8 +40,8 @@ super + shift + g
 
 ## fancy lockscreen :)
 super + l
-	i3lock -ni /home/vh/.config/i3lock.png
-	
+	cd ~/.config/filtration && ./filtration -b 12 -t test.png -s med-res-lock.png && i3lock -u -i test.png
+
 ## take a screenshot
 Print
 	scrot 'scrot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f ~ ; viewnior ~/$f'
