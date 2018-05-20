@@ -5,9 +5,9 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char font[] = "Source Code Pro:pixelsize=11:antialias=true:autohint=true";
-static int borderpx = 10;
-#define histsize 10000
+static char font[] = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+static int borderpx = 2;
+#define histsize 2000
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -17,7 +17,7 @@ static int borderpx = 10;
  * 4: value of shell in /etc/passwd
  * 5: value of shell in config.h
  */
-static char shell[] = "/bin/bash";
+static char shell[] = "/bin/sh";
 static char *utmp = NULL;
 static char stty_args[] = "stty raw pass8 nl -echo -iexten -cstopb 38400";
 
@@ -64,9 +64,9 @@ static unsigned int cursorthickness = 2;
 static int bellvolume = 0;
 
 /* default TERM value */
-static char termname[] = "xterm-256color";
+static char termname[] = "st-256color";
 
-static unsigned int tabspaces = 4;
+static unsigned int tabspaces = 8;
 
 /* bg opacity */
 static const int alpha = 0xdd;
@@ -74,24 +74,24 @@ static const int alpha = 0xdd;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-  "#2e3c43", /* base01 */
-  "#f07178", /* base08 */
-  "#c3e88d", /* base0B */
-  "#ffcb6b", /* base0A */
-  "#82aaff", /* base0D */
-  "#ff5370", /* base0F */
-  "#89ddff", /* base0C */
-  "#eeffff", /* base06 */
-  "#263238", /* base00 */
-  "#f78c6c", /* base09 */
-  "#314549", /* base02 */
-  "#546e7a", /* base03 */
-  "#b2ccd6", /* base04 */
-  "#c792ea", /* base0E */
-  "#eeffff", /* base05 */
-  "#ffffff", /* base07 */
+	/* solarized dark */
+	"#073642",  /*  0: black    */
+	"#dc322f",  /*  1: red      */
+	"#859900",  /*  2: green    */
+	"#b58900",  /*  3: yellow   */
+	"#268bd2",  /*  4: blue     */
+	"#d33682",  /*  5: magenta  */
+	"#2aa198",  /*  6: cyan     */
+	"#eee8d5",  /*  7: white    */
+	"#002b36",  /*  8: brblack  */
+	"#cb4b16",  /*  9: brred    */
+	"#586e75",  /* 10: brgreen  */
+	"#657b83",  /* 11: bryellow */
+	"#839496",  /* 12: brblue   */
+	"#6c71c4",  /* 13: brmagenta*/
+	"#93a1a1",  /* 14: brcyan   */
+	"#fdf6e3",  /* 15: brwhite  */
 };
-
 
 
 /*
@@ -110,7 +110,7 @@ static unsigned int defaultrcs = 15;
  * 6: Bar ("|")
  * 7: Snowman ("☃")
  */
-static unsigned int cursorshape = 6;
+static unsigned int cursorshape = 2;
 
 /*
  * Default colour and shape of the mouse cursor
@@ -157,8 +157,8 @@ static Shortcut shortcuts[] = {
 	{ MODKEY|ShiftMask,     XK_Home,        xzoomreset,     {.f =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ MODKEY|ShiftMask,     XK_Insert,      clippaste,      {.i =  0} },
-	{ ControlMask|ShiftMask,XK_C,           clipcopy,       {.i =  0} },
-	{ ControlMask|ShiftMask,XK_V,           clippaste,      {.i =  0} },
+	{ MODKEY|ShiftMask,     XK_C,           clipcopy,       {.i =  0} },
+	{ MODKEY|ShiftMask,     XK_V,           clippaste,      {.i =  0} },
 	{ MODKEY,               XK_Num_Lock,    numlock,        {.i =  0} },
  	{ MODKEY,               XK_l,           copyurl,        {.i =  0} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
