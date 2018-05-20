@@ -1,0 +1,92 @@
+#!/usr/bin/bash
+
+#Colors
+graybg="#2C393F"
+lightbg="#37474F"
+bluefg="#89DDFF"
+orangefg="#EA9560"
+redfg="#EC5F67"
+greenfg="#8BD649"
+yellowfg="#FFCC00"
+colorAccent="#C3E88D"
+grayAccent="#546E7A"
+defaultbg="#263238"
+
+
+# Define the clock
+Clock() {
+        TIME=$(date "+%R")
+
+		echo -n -e "%{F${colorAccent}}\ue016%{F-} $TIME"
+}
+
+#Battery() {
+#	battery="$(</sys/class/power_supply/BAT0/capacity)"
+#	charging="$(</sys/class/power_supply/BAT0/status)"
+#
+#	case "$battery" in
+#		[0-9]|10)
+#			battery="%{F${colorAccent}}\ue243%{F-}  ${battery}"
+#		;;
+#
+#		1[0-9]|2[0-5])
+#			battery="%{F${colorAccent}}\ue245%{F-}  ${battery}"
+#		;;
+#
+#		2[6-9]|3[0-9]|4[0-9]|50)
+#			battery="%{F${colorAccent}}\ue247%{F-}  ${battery}"
+#		;;
+#
+#		5[1-9]|6[0-9]|7[0-5])
+#			battery="%{F${colorAccent}}\ue249%{F-}  ${battery}"
+#		;;
+#
+#		7[6-9]|8[0-9]|9[0-9]|100)
+#			battery="%{F${colorAccent}}\ue24b%{F-}  ${battery}"
+#		;;
+#	esac
+#
+#	echo -e -n $battery
+#}
+
+Tabs() {
+    cur=`xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}'`
+    tot=`xprop -root _NET_NUMBER_OF_DESKTOPS | awk '{print $3}'`
+
+    for w in `seq 0 $((cur - 1))`; do line="${line}%{F${grayAccent}} \ue105 %{F-}"; done
+    line="${line}%{F${colorAccent}} \ue105 %{F-}"
+	for w in `seq $((cur + 1)) $(($tot - 1))`; do line="${line}%{F${grayAccent}} \ue105 %{F-}"; done
+    echo -e $line
+}
+
+volume() {
+
+  	vol=$(amixer get Master | sed -n 's/^.*\[\([0-9]\+\)%.*$/\1/p' | uniq)
+
+
+	echo -n -e "%{F${colorAccent}}\ue203%{F-} $vol "
+}
+
+wifi(){
+	WIFI_SSID=$(iw wlp2s0 link | grep 'SSID' | sed 's/SSID: //' | sed 's/\t//')
+	WIFI_SIGNAL=$(iw wlp2s0 link | grep 'signal' | sed 's/signal: //' | sed 's/ dBm//' | sed 's/\t//')
+	WIFI_IP=$(ifconfig wlp2s0 | grep "inet " | cut -d' ' -f10)
+  		echo   -n -e "%{F${colorAccent}}\ue21a%{F-} $WIFI_SSID"
+}
+
+key(){
+	keyboard=$(xset -q | while read -r line ; do [[ $line = *Group* ]] && line=${line//13*} && ([[ $line = *off* ]] && echo 'EN ' || echo 'RU ') && exit ; done)
+	 echo   -n -e "%{F${colorAccent}}\ue26f%{F-} $keyboard"
+}
+
+
+
+
+# Print the clock
+while true; do
+     BAR_INPUT="%{l}%{B${defaultbg}}%{O15}$(Clock)%{O10}$(key)%{O15}%{B-}
+	 %{c}%{B${defaultbg}}%{O15}$(Tabs)%{O15}%{B-}
+	 %{r}%{O15}%{B${defaultbg}}%{O15}$(volume)$(wifi)%{O15}%{B-}" 
+     echo $BAR_INPUT
+     sleep 1
+done
