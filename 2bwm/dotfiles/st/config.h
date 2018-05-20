@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-char font[] = "scientifica:pixelsize=11:antialias=false:autohint=true";
+char font[] = "Source Code Pro:pixelsize=10:antialias=false:autohint=true";
 static int borderpx = 25;
 
 /*
